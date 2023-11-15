@@ -1,82 +1,44 @@
+//* INPUTS
 const displayResult = document.getElementById("display-result");
+
+//* FORM ELEMENTS
+        // BUTTONS
 const createBtn = document.querySelector(".create");
 const refreshBtn = document.querySelector(".refresh")
+const copyBtn = document.querySelector(".copy")
+
+//* CHECKBOX
 const numberCheckbox = document.getElementById("number")
 const symbolCheckbox = document.getElementById("symbol")
 
-
-
+//* LISTS FOR PASSWORDS
 const symbols = "!@#$%^&*()\\_+~|}{[]:;?><,./-=";
 const numbers = "0123456789"; 
 const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
+//* ELEMENT AREAS
 const range = document.querySelector(".form-range")
-const copyBtn = document.querySelector(".copy")
 const randomReload = document.querySelector(".random-reload-copy")
+const subElements = document.querySelector(".length-numbers-symbols")
 
 
+//* VARIABLES
 
-randomReload.addEventListener("click",(e)=>{
-        getSelectedOption()
-})
-
-
-
-
-
-console.log(range);
-
+        // FOR FORM OPTION SELECT
+let selectedOption
+        // FOR FORM RANGE SELECT
 let defaultRange = Number(range.value);
-
-//  FORM RANGE PROCESS
-let selectedValue = 24;
-
-document.addEventListener("DOMContentLoaded", function () {
-    let defaultRange = Number(range.value);
-    console.log(defaultRange);
-    const rangeInput = document.getElementById("form-range");
-    rangeInput.addEventListener("input", function () {
-         selectedValue = rangeInput.value;
-        console.log(selectedValue);
-
-        });
-});
-
+let selectedValue = 24; // get as default 24
+        // CHECKBOX DEFAULT STATEMENTS
 let isClickedSymbol = false;
 let isClickedNumber = false;
 
-// CHECKBOX FUNCTION
-function showCheckBox(){
-    const symbolCheckbox = document.getElementById("symbol")
-    const numberCheckbox = document.getElementById("number")
-    isClickedSymbol = symbolCheckbox.checked;
-    isClickedNumber = numberCheckbox.checked;
-}
 
-const subElements = document.querySelector(".length-numbers-symbols")
-showCheckBox()
-let selectedOption
-
-function getSelectedOption(){
-
-        let selectElement = document.getElementById("form-select");
-
-        selectedOption = selectElement.options[selectElement.selectedIndex];
-        console.log(selectedOption);
-
-
-        if(Number(selectedOption.value) === 1){
-                subElements.style.display="block";
-
-        }
-
-        else{
-                subElements.style.display="none";
-        }
-
-}
-
-
+//* CLICK EVENTS
+        // refresh botton is clicked
+randomReload.addEventListener("click",(e)=>{
+        getSelectedOption()
+})
 
 createBtn.addEventListener("click", () => {
         console.log("is clicked");
@@ -113,13 +75,63 @@ refreshBtn.addEventListener("click", () => {
 
 
 
+// DOM LISTENING..
+document.addEventListener("DOMContentLoaded", function () {
+        let defaultRange = Number(range.value);
+        console.log(defaultRange);
+        const rangeInput = document.getElementById("form-range");
+                // get the range input 
+        rangeInput.addEventListener("input", function () {
+                selectedValue = rangeInput.value;
+                console.log(selectedValue);
+
+                });
+});
+
+
+ // COPY
+ 
+ copyBtn.addEventListener("click", ()=>{
+        $(".copy").notify("Copied","success"
+        );
+        navigator.clipboard.writeText(displayResult.innerText)
+        
+      });
 
 
 
+// *******         FUNCTIONS          ********
+
+// CHECKBOX FUNCTION
+function showCheckBox(){
+    const symbolCheckbox = document.getElementById("symbol")
+    const numberCheckbox = document.getElementById("number")
+    isClickedSymbol = symbolCheckbox.checked;
+    isClickedNumber = numberCheckbox.checked;
+}
+
+showCheckBox()
+
+// SELECTED OPTION FUNCTION
+
+function getSelectedOption(){
+
+        let selectElement = document.getElementById("form-select");
+
+        selectedOption = selectElement.options[selectElement.selectedIndex];
+        console.log(selectedOption);
+
+        if(Number(selectedOption.value) === 1){
+                subElements.style.display="block";
+        }
+        else{
+                subElements.style.display="none";
+        }
+
+}
 
 
-
-
+// PASSWORD CREATING
 
 function createPassword () {
                 showCheckBox()
@@ -206,13 +218,5 @@ function createPassword () {
 
 
 
-        // COPY
-
-copyBtn.addEventListener("click", ()=>{
-        $(".copy").notify("Copied","success"
-        );
-
-        navigator.clipboard.writeText(displayResult.innerText)
-        
-      });
+       
 
