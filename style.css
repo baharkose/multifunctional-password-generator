@@ -1,0 +1,73 @@
+body{
+
+    width: 100%;
+
+}
+
+
+.container {
+    height: 100vh;
+    /* width: 40%; */
+}
+.random-reload-copy{
+    gap: 2rem !important;
+}
+
+.form-select,
+.copy{
+    width: 300px !important;
+    height: 50px;
+    border-radius: 30px;
+  
+}
+
+.copy::before{
+
+    content: "Kopyalandı" !important;
+    color: black;
+    width: 60px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 15px;
+    top: 10px;
+    left: calc(50% - 30px); /* Left özelliği ayarlandı */
+ 
+ }
+
+
+.refresh{
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+#display-result{
+    font-weight: bold;
+    padding-top:3rem;
+    text-align: center;
+   overflow-wrap: break-word;
+    /* background-color: lightgreen; */
+    width:500px;
+    height: 150px;
+}
+.create{
+    margin-top:1rem;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.form-range-div{
+    position: relative;
+}
+
+output{
+    position: absolute;
+    top: -25px;
+    left: 50%;
+}
+
+
+
+
+
+
+
